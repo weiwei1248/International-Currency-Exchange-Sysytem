@@ -1,0 +1,367 @@
+@import "http://designmodo.github.io/Flat-UI/dist/css/flat-ui.min.css";
+@import "https://daneden.github.io/animate.css/animate.min.css";
+
+body {
+  	position: relative;
+  	color:#4d4d4d;
+  	height: 110%;
+  	background-color:#f6f7fb;
+  	font-family: Arial !important;
+}
+
+p {
+  	font-size: 0.9em;
+}
+.blue {
+	color: #005fa4;
+}
+.disabled {
+	pointer-events: none;
+	cursor: default;
+	color: darkgrey !important;
+}
+
+/* Wrappers*/
+#wrapper {
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	padding-left: 0;
+	transition: all 0.5s ease;
+}
+#wrapper.toggled {
+  	padding-left: 10em;
+}
+#wrapper.toggled #sidebar-wrapper {
+  	width: 13em;
+}
+#wrapper.toggled #page-content-wrapper {
+	margin-left:-7em;
+}
+#sidebar-wrapper {
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	background: #005fa4;
+	height: 100%;
+	left: 220px;
+	margin-left: -220px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	transition: all 0.5s ease;
+	width: 0;
+	z-index: 1000;
+}
+#sidebar-wrapper::-webkit-scrollbar {
+  	display: none;
+}
+#page-content-wrapper {
+  	padding-top: 30px;
+  	margin-left: -150px;
+}
+/*Sidebar nav styles */
+.inner-menu input{
+	background-color: transparent;
+	border: none;
+	margin-left: -5px;
+	margin-bottom: -5px;
+}
+.inner-menu a{
+	font-size: 16px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.sidebar-nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	width: 220px;
+}
+.sidebar-nav li {
+	display: inline-block;
+	line-height: 20px;
+	position: relative;
+	width: 120%;
+}
+.sidebar-nav li:before {
+	background-color: #1c1c1c;
+	content: '';
+	height: 100%;
+	left: -5px;
+	position: absolute;
+	top: 0;
+	-webkit-transition: width 0.2s ease-in;
+	transition: width 0.2s ease-in;
+	width: 3px;
+	z-index: -1;
+}
+.sidebar-nav li:first-child a{
+	background-color: #1a1a1a;
+	color: #ffffff;
+}
+.sidebar-nav li:nth-child(2):before {
+  	background-color: #f6f7fb;
+}
+.sidebar-nav li:nth-child(3):before {
+  	background-color: #f6f7fb;
+}
+.sidebar-nav li:nth-child(4):before {
+  	background-color: #f6f7fb;
+}
+.sidebar-nav li:nth-child(5):before {
+  	background-color: #f6f7fb;
+}
+.sidebar-nav li:nth-child(6):before {
+  	background-color: #f6f7fb;
+}
+.sidebar-nav li:hover:before {
+	-webkit-transition: width 0.2s ease-in;
+	transition: width 0.2s ease-in;
+	width: 100%;
+}
+.sidebar-nav li a {
+	color: white;
+	display: block;
+	padding: 10px 15px 10px 30px;
+	text-decoration: none;
+}
+.sidebar-nav li.open:hover before {
+	-webkit-transition: width 0.2s ease-in;
+	transition: width 0.2s ease-in;
+	width: 100%;
+}
+.sidebar-nav .active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:active,
+.sidebar-nav li a:active {
+	background-color:#f6f7fb;
+	color:#005fa4;
+}
+.sidebar-nav li a:hover,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:focus {
+	background-color: transparent;
+	color: #005fa4;
+	text-decoration: none;
+}
+.sidebar-nav .no-ani a:hover {
+  	background-color: #1a1a1a;
+}
+.sidebar-nav > .sidebar-brand {
+	font-size: 30px;
+	height: 65px;
+	line-height: 45px;
+}
+/*Dark Overlay*/
+.overlay {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 1;
+}
+/*Others*/
+.btn-submit .btn-default {
+	background-color: #005fa4;
+	border: 1px solid #005fa4;
+	color: white;
+	width: 50%;
+}
+.btn-submit .btn-default:hover, .btn-search .btn-default:hover {
+	background-color: transparent;
+	color:#005fa4;
+	transition: all 0.5s;
+}
+.submitbtn .btn-lg {
+	margin-top:1.3em;
+	margin-bottom:2em;
+	width: 100%;
+	background-color: #005fa4;
+  	color: white;
+  	border: 1px solid #005fa4;
+  	margin-left: 3.5em;
+  	font-size: 1.2em;
+}
+.submitbtn .btn-lg:hover {
+  	background-color: transparent;
+  	color: #005fa4;
+  	transition: all 0.5s;
+}
+label {
+  	font-size: 13px;
+}
+.checkbox {
+  	width: 100%;
+  	margin-top: -5px;
+}
+input {
+  	margin-left: 15px;
+  	margin-bottom: 15px;
+}
+table {
+		color:#4d4d4d;
+}
+thead {
+		color:grey;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+	background-color: #005fa4;
+	color:white;
+	transition:all 0.3s;
+}
+.col-lg-offset-2 {
+	margin-left: 9em;
+}
+/*transaction style*/
+.originalbox {
+	background-color: #005fa4;
+	color: white;
+	width: 100%;
+	padding: 10px 18px;
+	border-radius: .3em;
+	height: 22em;
+}
+.originalbox h6, .destinationbox h6 {
+  	text-align: center;
+}
+.destinationbox {
+	border: 1px solid #005fa4;
+	color: #005fa4;
+	width: 100%;
+	padding: 10px 18px;
+	border-radius: .3em;
+	margin-left: 0.5em;
+	height: 22em;
+}
+._span {
+	position: absolute;
+	index-z: 200;
+	left: 500px;
+}
+.totalbox .modal-content{
+	padding-left:20px;
+}
+.totalbox span {
+  	margin-left: 380px;
+  	color: #005fa4;
+}
+.totalbox .span2 span {
+  	margin-left: 400px;
+  	color: black;
+}
+.totalbox img {
+	position: absolute;
+	z-index: 10;
+	width: 13%;
+	margin-top: -55px;
+	margin-left: -80px;
+}
+.totalbox .btn-lg {
+	width: 25%;
+	background-color: #005fa4;
+	color: white;
+	border: 1px solid #005fa4;
+}
+.totalbox .closebtn {
+	width: 25%;
+	background-color: lightgrey;
+	color: white;
+	border: 1px solid lightgrey;
+}
+.totalbox .btn-lg:hover {
+	background-color: transparent;
+	color: #005fa4;
+	transition: all 0.5s;
+}
+.showrate {
+	margin-top: 1.5em;
+	color: #005fa4;
+	border:1px solid #005fa4;
+	border-radius: .3em;
+	margin-left: 0.8em;
+}
+.showrate span {
+	margin-left: 0.5em;
+}
+.showrate h6 {
+	font-size: 1.2em;
+}
+/*history style*/
+.datebox {
+	border:1px solid grey;
+	border-radius: .3em;
+	background-color:white;
+}
+.datebox-title p {
+	color: #005fa4;
+	font-size: 11px;
+}
+.faq {
+	margin-bottom: 2em;
+}
+.faq a {
+	color:#4d4d4d;
+}
+.faq a:hover {
+	color: #005fa4;
+}
+.datebox input {
+	border:none;
+	width:116%;
+	margin-left:-12px;
+	margin-top:-20px;
+	margin-bottom:-0.1px;
+}
+.searchbox {
+	padding:27px 15px;
+}
+.searchbox input {
+	border:1px solid #005fa4 !important;
+}
+.input-group-btn .btn-default {
+	padding:27px 15px;
+	background-color:#005fa4;
+	color:white;
+	border:2px solid #005fa4 !important;
+}
+.input-group-btn .btn-default p {
+	margin-top:-10px;
+}
+.input-group-btn .btn-default:hover {
+	background-color:#f6f7fb;
+	color:#005fa4;
+	transition:all 0.5s;
+}
+.btn-search .btn-default {
+  background-color: #005fa4;
+  border: 1px solid #005fa4;
+  color: white;
+  width:100%;
+  margin-left: 1em;
+  height: 3.8em;
+}
+.split {
+	width: 23% !important;
+}
+.split2 {
+	width: 42% !important;
+}
+.bindform {
+	margin-left: -0.8em;
+}
+.bindform .form-group {
+	margin-bottom: -0.2em;
+}
+.bindform select {
+	margin-left: 1em;
+}
+.agreement{
+	width: 120%;
+}

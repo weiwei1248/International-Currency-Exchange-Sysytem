@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confirmation</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<style>
+  .my-navbar {
+    background:black !important;
+  }
+</style>
+<body>
+  <header>
+    <nav class="navbar navbar-fixed-top my-navbar" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#example-navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a th:href="@{/index}" class="navbar-brand"><span class="blue">I</span>CES</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a th:href="@{/index}">Home</a></li>
+                        <li><a th:href="@{/transaction}">Account</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+  </header>
+  <div class="container">
+      <div class="main">
+        <img src="img/confirm.png" />
+        <h1>Congratulation!</h1>
+        <hr/>
+        <h4>You have already activated your account successfully.</h4>
+        <p>You have the rights to start transacting.</p>
+        <div class="btn-transfer">
+          <a th:href="@{/transaction}"><button class="btn btn-lg">Go to Account management</button></a>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+  <script th:src="@{http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js}"></script>
+  <script th:src="@{/js/navigation.js}"></script>
+  <script th:src="@{/js/pageContainer.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

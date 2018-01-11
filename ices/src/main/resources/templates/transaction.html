@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account Management</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/accountStyle.css}"/>
+
+  <script type="text/javascript" th:src="@{js/jquery-1.10.2.min.js}"></script>
+  <script type="text/javascript" th:src="@{js/bootstrapValidator.js}"></script>
+</head>
+
+<body>
+  <div id="wrapper" class="toggled">
+        <div class="overlay"></div>
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand no-ani">
+                    <a th:href="@{/index}">
+                       <span class="blue">I</span>CES
+                    </a>
+                </li>
+                <li class="inner-menu">
+                    <a th:href="@{/index}"> Home</a>
+                </li>
+                <li class="inner-menu">
+                    <a th:href="@{/binding}"> Account Management</a>
+                </li>
+                <li class="inner-menu">
+                    <a th:href="@{/transaction}" class="active"> Transaction</a>
+                </li>
+                <li class="inner-menu">
+                    <a th:href="@{/history}"> History</a>
+                </li>
+                <li class="inner-menu">
+                    <form th:action="@{/logout}" method="post">
+                        <a><input type="submit" value="Sign Out"/></a>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        <div id="page-content-wrapper">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <div><h3>Exchange Transaction</h3></div>
+                    <hr/>
+                    <div th:if="${param.error}" class="alert alert-danger alert-dismissable fade in">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong>Warning!</strong> Transaction error.
+                      <p th:text="${param.error[0]}"></p>
+                    </div>
+                    <h6 class="blue">Exchange Transaction</h6>
+                    <form role="form" id="_form" th:action="@{/transaction}" method="post">
+	                    <div class="col-sm-6">
+	                        <div class="originalbox">
+	                          <h6>Source Account</h6>
+	                                  <p>Choose your <strong>source</strong> bank account:</p>
+	                                  <div class="form-group">
+	                                       <select class="form-control" id="_oaccount" name="sourceAccount" onchange="checkUpdate()">
+	                                           <option th:each="bankAccount : ${bankAccounts}"
+	                                               th:value="${bankAccount.code}"
+	                                               th:text="${bankAccount.value}">ScotiaBank
+                                           </option>
+	                                      </select>
+	                                  </div>
+	                                  <p>The currency you need to pay :</p>
+	                                  <input style="margin-left:-2px;" type="text" class="form-control" id="_ocurrency" readonly="readonly" name="ocurrency"/>
+	                                  <p>The amount you need to pay:</p>
+	                                  <div class="form-group">
+	                                  	  <input style="margin-left:-2px; margin-bottom:-0.55em;" type="number" class="form-control" id="_oamount" required="required" name="sourceAmount" value="0" onchange="checkUpdate()"/>
+	                                  </div>
+	                        	 </div>
+	                        </div>
+                      		<div class="col-sm-6"><!-- Destination part -->
+	                          	<div class="destinationbox">
+	                              	<h6>Destination Account</h6>
+		                                  <p>Choose your <strong>destination</strong> bank account:</p>
+		                                  <div class="form-group">
+	                                      		<select class="form-control" id="_daccount" name="destinationAccount" onchange="checkUpdate()">
+	                                          		<option th:each="bankAccount : ${bankAccounts}"
+			                                                 th:value="${bankAccount.code}"
+			                                                 th:text="${bankAccount.value}">ScotiaBank
+                                          			</option>
+	                                      		</select>
+                                   	  	  </div>
+		                                  <p>The currency you want to receive :</p>
+		                                  <input style="margin-left:-2px;" type="text" class="form-control" id="_dcurrency" readonly="readonly" name="dcurrency"/>
+		                                  <p>The amount you will receive :</p>
+		                                  <input style="margin-left:-2px;" type="number" class="form-control" id="_damount" readonly="readonly" name="damount"/>
+		                          	</div>
+		                      </div>
+		                      <div class="col-sm-3 showrate">
+		                      	 <h6>Bank rate :<span id="_obankrate"></span></h6>
+		                      </div>
+		                      <div class="col-sm-8 submitbtn">
+		                     	  <a onClick="checkTotal()" ><input id="_sb" type="submit" value="Transfer" class="btn btn-lg" data-target="#total"/></a>
+		                      </div>
+                      	</form>
+                      	<div class="totalbox">
+                        	<div id="modals"></div>
+                  		</div><!-- Total part -->
+		                <h6 class="blue col-sm-6">FAQ</h6>
+		                  	<div class="col-sm-12 faq">
+		                      	<div class="col-sm-6 with-right-border">
+			                        <p><a href="#" data-toggle="modal" data-target="#q1">How can i transfer the money?</a></p>
+			                        <p><a href="#" data-toggle="modal" data-target="#q2">Some information about the policy.</a></p>
+		                      	</div>
+		                      	<div class="col-sm-6">
+			                        <p><a href="#" data-toggle="modal" data-target="#q3">Where do you get the currency rate?</a></p>
+			                        <p><a href="#" data-toggle="modal" data-target="#q4">How long dose it take to transfer money?</a></p>
+		                      	</div>
+                    		</div>
+                  		</div>
+              		</div>
+          		</div>
+      		</div>
+  		</div>
+
+	<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/pageContainer.js}"></script>
+	<script th:src="@{/js/transact.js}"></script>
+
+</body>
+</html>

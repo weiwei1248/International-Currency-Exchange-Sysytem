@@ -1,0 +1,26 @@
+# This is a sample build configuration for Java (Gradle).
+# Check our guides at https://confluence.atlassian.com/x/zd-5Mw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: java:8
+
+pipelines:
+  branches:
+    development:
+      - step:
+          script:
+            - echo "This script runs only on commit to the development branch."
+            - cat /etc/*-release
+            - apt-get update && apt-get install -y python-dev
+            - curl -O https://bootstrap.pypa.io/get-pip.py
+            - python get-pip.py
+            - pip install awsebcli --upgrade
+            - python --version
+            - pip --version
+            - eb --version
+            - cd ices
+            - ls -l
+            - bash ./gradlew bootRepackage
+            - pwd
+            - eb deploy

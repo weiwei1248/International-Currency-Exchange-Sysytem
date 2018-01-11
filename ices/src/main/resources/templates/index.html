@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ICES</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+
+<div id="ld" class="load-4">
+    <div class="ring-1"></div>
+</div>
+
+<div class="clear"></div>
+
+<body onload="winload();">
+  <div class="header">
+      <div class="bg-color">
+        <header>
+        <nav class="navbar navbar-fixed-top my-navbar" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target="#example-navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a th:href="@{/index}" class="navbar-brand"><span class="blue">I</span>CES</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a th:href="@{/index}">Home</a></li>
+                            <li><a th:href="@{/transaction}">Account</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+      </header>
+        <div class="container col-sm-12">
+            <div class="banner-info col-sm-6">
+                <h1><span class="blue">International</span> Currency Exchange</h1>
+                <br/>
+                <p>Our system aims to give you a clear rate tendency and currency services.
+                <br/> We will show current rate and focus on transactions of different currencies.
+                <br/> Go register and get your expected money now!</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  <div class="header-content">
+      <div class="row">
+        <div class="mid-about">
+            <div class="col-sm-4">
+              <span class="glyphicon "><h3>Fee Free</h3></span>
+                <p><em>No need to pay any additional fee when transacting currencies. Enjoy the priority offer for student accounts!</em></p>
+            </div>
+            <div class="col-sm-4">
+              <span class="glyphicon second"><h3>Greate Rates</h3></span>
+              <p class="blue"><em>We will help you to identify the lowest rate between each bank during your transaction</em></p>
+            </div>
+            <div class="col-sm-4">
+              <span class="glyphicon third"><h3>Secure</h3></span>
+              <p><em>Our platform will establish a connection between banks in order to keep your accounts safety.</em></p>
+            </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="bottom">
+      <div class="bg-color">
+        <div class="container">
+            <div class="row">
+              <div class="bottom-info">
+                  <h1><span class="blue">Transaction</span> System</h1>
+                  <br/>
+                  <p>We are going to provide you a quite god rate to you when you exchange currencies.
+                  <br/> It is not only a exchange platform but also a good opportunity to get money as soon as possible.
+                  <br/> Transact and get a perfect customer experience now!</p>
+                  <br/>
+                  <div class="btn-transfer">
+                    <a th:href="@{/transaction}" style="color:white"><button class="btn btn-lg">Transact</button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  <div id="footer"></div>
+
+    <script th:src="@{http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js}"></script>
+    <script th:src="@{/js/navigation.js}"></script>
+    <script th:src="@{/js/pageContainer.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

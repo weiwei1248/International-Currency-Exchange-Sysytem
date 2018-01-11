@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+
+<div id="ld" class="load-4">
+    <div class="ring-1"></div>
+</div>
+<div class="clear"></div>
+
+<body onload="winload();">
+  <div class="login-mainpage">
+      <header>
+      <nav class="navbar navbar-fixed-top my-navbar" role="navigation">
+              <div class="container-fluid">
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse"
+                              data-target="#example-navbar-collapse">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                      </button>
+                      <a th:href="@{/index}" class="navbar-brand"><span class="blue">I</span>CES</a>
+                  </div>
+                  <div class="collapse navbar-collapse">
+                      <ul class="nav navbar-nav navbar-right">
+                          <li><a th:href="@{/index}">Home</a></li>
+                          <li><a th:href="@{/transaction}">Account</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+    </header>
+      <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+               <div>
+                  <form th:action="@{/login}" method="post" class="form-signin">
+                    <h1>Start to <span class="blue">exchange</span><br/> money today.</h1>
+                    <br/>
+                    <br/>
+                    <div th:if="${param.error}" class="alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Error!</strong> Invalid email or password.
+                    </div>
+                    <div th:if="${param.expired}" class="alert alert-danger alert-dismissable fade in">
+                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                         <strong>Error!</strong> Session has expired.
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success alert-dismissable fade in">
+                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                         <strong>Success!</strong> You have been logged out.
+                    </div>
+                    <input type="text" class="form-control" name="username" placeholder="Enter email" required="true" />
+                    <br/>
+                    <input type="password" class="form-control" name="password" placeholder="Enter password" required="true" />
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="col-sm-4 btn-login">
+                      <button class="btn btn-lg" type="submit" th:text="Login">Log in</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-sm-5 btn-register">
+                  <a th:href="@{/register}"><button class="btn btn-lg">Sign up</button></a>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script th:src="@{http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js}"></script>
+  <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
+  <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/navigation.js}"></script>
+  <script th:src="@{/js/pageContainer.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

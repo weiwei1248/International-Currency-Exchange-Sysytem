@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+  <link rel="stylesheet" th:href="@{/css/bootstrapValidator.css}"/>
+
+  <script type="text/javascript" th:src="@{js/jquery-1.10.2.min.js}"></script>
+  <script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{js/bootstrapValidator.js}"></script>
+
+  <title>Registration</title>
+</head>
+
+<style>
+  .my-navbar {
+    background:black !important;
+  }
+</style>
+
+<div id="ld" class="load-4">
+    <div class="ring-1"></div>
+</div>
+
+<div class="clear"></div>
+
+<body onload="winload();">
+  <div class="regis-mainpage">
+      <header>
+    <nav class="navbar navbar-fixed-top my-navbar" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#example-navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a th:href="@{/index}" class="navbar-brand"><span class="blue">I</span>CES</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a th:href="@{/index}">Home</a></li>
+                        <li><a th:href="@{/binding}">Account</a></li>
+                    </ul>
+                </div>
+            </div>
+      </nav>
+    </header>
+      <div class="container">
+        <div class="row">
+            <div class="col-sm-10">
+              <div id="modals"></div>
+              <div class="blue-box col-sm-3"><h1>Sign Up</h1></div>
+              <div class="col-sm-6"><h3>Start to create a new account</h3></div>
+              <div class="main-box col-sm-10">
+                <div th:if="${param.error}" class="regisalert alert alert-danger alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                          <strong>Error!</strong> The email has already existed.
+                  </div>
+                  <div class="col-sm-8">
+              <form id="form" class="form-signin" th:action="@{/register}" th:method="post">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="_email" placeholder="Email address" required="required" name="email"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="_password" placeholder="Password" required="required" name="password" />
+                    <br/>
+                    <input type="password" class="form-control" id="_password2" placeholder="Password confirm" required="required" name="password2"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="_fn" placeholder="First name" required="required" name="firstname"/>
+                    <br/>
+                    <input type="text" class="form-control" id="_ln" placeholder="Last name" required="required" name="lastname"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="_bday" placeholder="Birthday (day/month/year)" required="required" name="bday"/>
+                </div>
+                  <div class="form-group col-sm-4" style="margin-left:-15px;">
+                      <select class="form-control" id="_province" name="province">
+                        <option>ON</option>
+                        <option>QC</option>
+                        <option>NS</option>
+                        <option>NB</option>
+                        <option>MB</option>
+                        <option>BC</option>
+                        <option>PE</option>
+                        <option>SK</option>
+                        <option>AB</option>
+                        <option>NL</option>
+                        <option>NT</option>
+                        <option>YT</option>
+                        <option>NU</option>
+                      </select>
+                  </div>
+                <div class="form-group">
+                    <input class="col-sm-4" type="text" id="_city" placeholder="City" required="required" name="city"/>
+                    <input class="col-sm-4" style="margin-left:15px;" type="text" id="_code" placeholder="Post code" required="required" name="code"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="_address" placeholder="Address" required="required" name="address"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="_number" placeholder="Phone number" required="required" name="number"/>
+                </div>
+                  <div class="checkbox">
+                      <label>
+                        <input type="checkbox" required="required" name="ch"/>I have read and agree to <a href="#" id="myAlert" data-toggle="modal" data-target="#user-agreement">User Agreement</a>.
+                        I have the right to add the contact information entered above and understand that ICES can contact me by e-mail.
+                      </label>
+                  </div>
+                  <div class="btn-submit"><button type="submit" class="btn btn-default" id="but">Submit</button></div>
+              </form>
+            </div>
+              </div>
+              <div class="col-sm-10">
+                <div class="white-box">
+                  <div class="col-sm-3">
+                    <br/>
+                      <a href="#" data-toggle="modal" data-target="#q1">How can i transfer the money?</a>
+                      <br/><br/>
+                      <a href="#" data-toggle="modal" data-target="#q2">Some information about the policy.</a>
+                      <br/><br/>
+                      <a href="#" data-toggle="modal" data-target="#q3">Where are the currencies come from?</a>
+                      <br/><br/>
+                      <a href="#" data-toggle="modal" data-target="#q4">How long it takes to transfer money?</a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div id="footer"></div>
+  </div>
+
+  <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/navigation.js}"></script>
+  <script th:src="@{/js/register.js}"></script>
+  <script th:src="@{/js/pageContainer.js}"></script>
+
+
+</body>
+</html>
